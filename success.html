@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Płatność przyjęta — MAX SPATIAL CRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.success-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:var(--nav) var(--px) 80px;}
+.success-box{max-width:520px;width:100%;text-align:center;}
+.s-icon{font-size:72px;margin-bottom:24px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.s-title{font-family:var(--font-d);font-size:clamp(32px,6vw,56px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);line-height:1;margin-bottom:16px;}
+.s-sub{font-family:var(--font-m);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3);margin-bottom:32px;}
+.s-card{background:var(--s1);border:1px solid var(--b1);border-radius:4px;padding:28px 32px;margin-bottom:32px;text-align:left;}
+.s-row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--b1);}
+.s-row:last-child{border-bottom:none;}
+.s-ico{font-size:20px;flex-shrink:0;margin-top:2px;}
+.s-txt{font-size:14px;color:var(--t2);line-height:1.6;}
+.s-txt strong{color:var(--text);}
+.s-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div><div class="cursor-f" id="curf"></div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><span class="logo-mark">MSC</span><span class="logo-sub">MAX SPATIAL CRAFT</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a><a href="services.html" class="nav-link">Usługi</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a><a href="shop.html" class="nav-link">Sklep 3D</a>
+    <a href="blog.html" class="nav-link">Blog</a><a href="social.html" class="nav-link">Social</a>
+    <a href="index.html#contact" class="nav-cta">Kontakt →</a>
+  </div>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html" class="mob-link">Home</a><a href="shop.html" class="mob-link">Sklep 3D</a>
+  <a href="index.html#contact" class="mob-link">Kontakt</a>
+</div>
+
+<div class="success-wrap">
+  <div class="success-box">
+    <div class="s-icon">✓</div>
+    <h1 class="s-title">Płatność<br>przyjęta!</h1>
+    <div class="s-sub">// Zamówienie potwierdzone</div>
+    <div class="s-card">
+      <div class="s-row">
+        <span class="s-ico">📧</span>
+        <div class="s-txt"><strong>Plik STL na email</strong><br>Wyślemy Twój plik w ciągu 24 godzin na adres podany przy zamówieniu.</div>
+      </div>
+      <div class="s-row">
+        <span class="s-ico">🧾</span>
+        <div class="s-txt"><strong>Potwierdzenie Stripe</strong><br>Paragon elektroniczny trafi na Twój email automatycznie od Stripe.</div>
+      </div>
+      <div class="s-row">
+        <span class="s-ico">💬</span>
+        <div class="s-txt"><strong>Pytania?</strong><br>Napisz na <strong>hello@maxspatialcraft.pl</strong> — odpowiadamy w ciągu 24h.</div>
+      </div>
+    </div>
+    <div class="s-actions">
+      <a href="shop.html" class="btn btn-out">Wróć do sklepu</a>
+      <a href="index.html" class="btn btn-acc">Strona główna →</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="ft-top">
+    <div><div class="ft-logo">MSC</div><div class="ft-tag">Studio między ideą a formą.</div></div>
+    <div class="ft-nav">
+      <div class="fn-col"><div class="fn-t">Sklep</div><a href="shop.html">Modele 3D</a></div>
+      <div class="fn-col"><div class="fn-t">Kontakt</div><a href="mailto:hello@maxspatialcraft.pl">Email</a></div>
+    </div>
+  </div>
+  <div class="ft-bot"><span>© 2025 MAX SPATIAL CRAFT.</span><span>Made in Poland 🇵🇱</span></div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+  // Wyczyść koszyk po udanej płatności
+  localStorage.removeItem('msc-cart');
+</script>
+</body>
+</html>

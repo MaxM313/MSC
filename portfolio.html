@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfolio — MAX SPATIAL CRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="cursor" id="cur"></div><div class="cursor-f" id="curf"></div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><span class="logo-mark">MSC</span><span class="logo-sub">MAX SPATIAL CRAFT</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a><a href="services.html" class="nav-link">Usługi</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a><a href="shop.html" class="nav-link">Sklep 3D</a>
+    <a href="blog.html" class="nav-link">Blog</a><a href="social.html" class="nav-link">Social</a>
+    <a href="index.html#contact" class="nav-cta">Kontakt →</a>
+  </div>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html" class="mob-link">Home</a><a href="services.html" class="mob-link">Usługi</a>
+  <a href="portfolio.html" class="mob-link">Portfolio</a><a href="shop.html" class="mob-link">Sklep 3D</a>
+  <a href="blog.html" class="mob-link">Blog</a><a href="social.html" class="mob-link">Social</a>
+  <a href="index.html#contact" class="mob-link">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="ph-label">// Nasze realizacje</div>
+  <h1 class="ph-title">PORT<em>FOLIO</em></h1>
+  <p class="ph-desc">Strony internetowe, modele 3D i gadżety dla restauracji, sklepów, hoteli i salonów. Każdy projekt tworzony indywidualnie — zero szablonów.</p>
+</section>
+
+<div class="port-filters">
+  <button class="f-btn active" data-filter="all">Wszystkie</button>
+  <button class="f-btn" data-filter="www">Strony WWW</button>
+  <button class="f-btn" data-filter="3d">Modele 3D</button>
+  <button class="f-btn" data-filter="restauracja">Restauracje</button>
+  <button class="f-btn" data-filter="sklep">Sklepy</button>
+  <button class="f-btn" data-filter="hotel">Hotel</button>
+  <button class="f-btn" data-filter="uslugi">Usługi</button>
+</div>
+
+<div class="port-full-grid">
+
+  <!-- Trattoria — featured -->
+  <div class="port-detail-card port-featured pdc-rest rv" data-cat="www restauracja">
+    <div class="pd-visual">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="background:linear-gradient(90deg,rgba(180,90,20,.5),rgba(120,40,10,.2));height:70px;"></div>
+          <div class="pd-row"><div class="pd-block" style="background:rgba(180,90,20,.2);"></div><div class="pd-block" style="background:rgba(180,90,20,.15);"></div><div class="pd-block" style="background:rgba(180,90,20,.1);"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w90"></div><div class="pd-tl w80"></div><div class="pd-tl w60"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags">
+        <span class="pd-tag acc">Restauracja</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">Menu online</span><span class="pd-tag">Rezerwacje</span><span class="pd-tag">SEO</span>
+      </div>
+      <div class="pd-name">Trattoria Bellavista</div>
+      <div class="pd-desc">Włoska restauracja premium — elegancki design, interaktywne menu z kategoriami, system rezerwacji stolików, galeria wnętrza. Wzrost rezerwacji online o 180% w pierwszym miesiącu.</div>
+      <a href="#" class="pd-arrow">Zobacz projekt →</a>
+    </div>
+  </div>
+
+  <!-- Sushi House -->
+  <div class="port-detail-card pdc-sushi rv rv-1" data-cat="www restauracja">
+    <div class="pd-visual">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="background:linear-gradient(90deg,rgba(0,180,140,.4),rgba(0,80,60,.2));height:60px;"></div>
+          <div class="pd-row"><div class="pd-block" style="background:rgba(0,160,120,.2);"></div><div class="pd-block" style="background:rgba(0,140,100,.15);"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w80"></div><div class="pd-tl w60"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Restauracja</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">Zamówienia online</span></div>
+      <div class="pd-name">Sushi House Kyoto</div>
+      <div class="pd-desc">Japońska restauracja — minimalistyczny design zen, pełne menu z alergenami, zamówienia online, integracja z systemem dostaw.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Pizzeria -->
+  <div class="port-detail-card pdc-pizza rv" data-cat="www restauracja">
+    <div class="pd-visual">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="background:linear-gradient(90deg,rgba(200,50,30,.5),rgba(120,20,10,.2));height:60px;"></div>
+          <div class="pd-row"><div class="pd-block" style="background:rgba(200,60,30,.2);"></div><div class="pd-block" style="background:rgba(180,40,20,.15);"></div><div class="pd-block" style="background:rgba(160,30,15,.1);"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w70"></div><div class="pd-tl w50"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Restauracja</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">Konfigurator pizzy</span></div>
+      <div class="pd-name">Pizzeria Napoli DOC</div>
+      <div class="pd-desc">Neapolitańska pizzeria z interaktywnym konfiguratorem pizzy, zamówieniami online i integracją z Glovo/Bolt Food.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Hotel — featured -->
+  <div class="port-detail-card port-featured pdc-hotel rv" data-cat="www hotel">
+    <div class="pd-visual">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="background:linear-gradient(90deg,rgba(100,80,220,.4),rgba(60,40,160,.2));height:70px;"></div>
+          <div class="pd-row"><div class="pd-block" style="background:rgba(100,80,200,.2);height:44px;"></div><div class="pd-block" style="background:rgba(80,60,180,.15);height:44px;"></div><div class="pd-block" style="background:rgba(60,40,160,.1);height:44px;"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w80"></div><div class="pd-tl w60"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Hotel</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">Rezerwacje</span><span class="pd-tag">Galeria 360°</span><span class="pd-tag">Wielojęzyczna</span></div>
+      <div class="pd-name">Hotel Vela Grand</div>
+      <div class="pd-desc">Butikowy hotel 4★ — zaawansowany system rezerwacji z wyborem pokoi, galeria 360°, pakiety ofertowe, integracja z Booking.com. Wzrost rezerwacji bezpośrednich o 240%.</div>
+      <a href="#" class="pd-arrow">Zobacz projekt →</a>
+    </div>
+  </div>
+
+  <!-- NordicWood -->
+  <div class="port-detail-card rv rv-1" data-cat="www sklep" style="background:var(--s1);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#001a18,#000a08);">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="background:linear-gradient(90deg,rgba(0,200,160,.3),rgba(0,120,90,.2));height:55px;"></div>
+          <div class="pd-row" style="gap:5px;"><div style="flex:1;height:44px;background:rgba(0,180,140,.15);border-radius:2px;"></div><div style="flex:1;height:44px;background:rgba(0,160,120,.12);border-radius:2px;"></div><div style="flex:1;height:44px;background:rgba(0,140,100,.1);border-radius:2px;"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w80"></div><div class="pd-tl w55"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Sklep</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">E-commerce</span><span class="pd-tag">Płatności Stripe</span></div>
+      <div class="pd-name">NordicWood Store</div>
+      <div class="pd-desc">Sklep z meblami skandynawskimi — filtrowanie produktów, koszyk, płatności Stripe, panel klienta. 200+ produktów.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Salon Aurora -->
+  <div class="port-detail-card pdc-salon rv" data-cat="www uslugi">
+    <div class="pd-visual">
+      <div class="pd-overlay"></div>
+      <div class="pd-browser">
+        <div class="pd-bar"><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-dot"></div><div class="pd-url"></div></div>
+        <div class="pd-content">
+          <div class="pd-hero-line" style="height:55px;"></div>
+          <div class="pd-row"><div class="pd-block" style="background:rgba(180,50,200,.2);"></div><div class="pd-block" style="background:rgba(140,30,160,.15);"></div></div>
+          <div class="pd-text-lines"><div class="pd-tl w75"></div><div class="pd-tl w55"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Usługi</span><span class="pd-tag">Strona WWW</span><span class="pd-tag">Rezerwacje online</span></div>
+      <div class="pd-name">Salon Piękności Aurora</div>
+      <div class="pd-desc">Nowoczesny salon z systemem rezerwacji online, cennikiem usług, galerią efektów i opiniami klientów.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- DIVIDER 3D -->
+  <div style="grid-column:1/-1;padding:32px 0 12px;border-top:1px solid var(--b1);margin-top:8px;" class="rv">
+    <div class="sec-label">// Współpraca 3D z restauracjami i firmami</div>
+    <h2 class="sec-title" style="font-size:clamp(26px,4vw,44px);">Modele 3D & druk<br><em>na zamówienie</em></h2>
+  </div>
+
+  <!-- Numery stolików -->
+  <div class="port-detail-card rv" data-cat="3d restauracja" style="border-color:rgba(180,90,20,.2);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#1a0a00,#0a0500);">
+      <div style="display:flex;gap:14px;z-index:2;position:relative;">
+        <div style="width:50px;height:68px;background:rgba(180,90,20,.18);border:1px solid rgba(180,90,20,.4);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-size:20px;color:rgba(180,90,20,.8);font-weight:700;">1</div>
+        <div style="width:50px;height:68px;background:rgba(180,90,20,.14);border:1px solid rgba(180,90,20,.3);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-size:20px;color:rgba(180,90,20,.7);font-weight:700;">7</div>
+        <div style="width:50px;height:68px;background:rgba(180,90,20,.1);border:1px solid rgba(180,90,20,.22);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-size:20px;color:rgba(180,90,20,.6);font-weight:700;">3</div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Druk 3D</span><span class="pd-tag">Restauracja</span><span class="pd-tag">Gadżet</span><span class="pd-tag">Branding</span></div>
+      <div class="pd-name">Numery stolików — Trattoria</div>
+      <div class="pd-desc">Zestaw 20 numerów stolików z logo restauracji na podstawce. Druk FDM PLA złoty matowy — spójny z identyfikacją wizualną lokalu.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Stojaki na menu -->
+  <div class="port-detail-card rv rv-1" data-cat="3d restauracja" style="border-color:rgba(0,200,140,.15);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#001a10,#000a06);">
+      <div style="display:flex;gap:16px;align-items:flex-end;z-index:2;position:relative;">
+        <div style="width:34px;height:76px;background:rgba(0,180,120,.18);border:1px solid rgba(0,180,120,.35);border-radius:2px 2px 0 0;"></div>
+        <div style="width:34px;height:96px;background:rgba(0,160,100,.22);border:1px solid rgba(0,160,100,.4);border-radius:2px 2px 0 0;"></div>
+        <div style="width:34px;height:64px;background:rgba(0,140,90,.14);border:1px solid rgba(0,140,90,.28);border-radius:2px 2px 0 0;"></div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Druk 3D</span><span class="pd-tag">Restauracja</span><span class="pd-tag">Akcesoria stołu</span></div>
+      <div class="pd-name">Stojaki na menu — Sushi House</div>
+      <div class="pd-desc">Minimalistyczne stojaki na karty menu w stylu japońskim. Druk SLA żywica, czarny mat. 30 sztuk dopasowanych do stolika 4-osobowego.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Szyld 3D -->
+  <div class="port-detail-card rv" data-cat="3d restauracja" style="border-color:rgba(200,50,30,.15);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#1a0505,#0a0000);">
+      <div style="text-align:center;z-index:2;position:relative;">
+        <div style="font-family:'Syncopate',sans-serif;font-size:30px;font-weight:700;color:rgba(200,50,30,.7);letter-spacing:.06em;line-height:1.1;">NAPOLI<br><span style="font-size:14px;opacity:.5;letter-spacing:.12em;">DOC</span></div>
+        <div style="width:120px;height:1px;background:rgba(200,50,30,.3);margin:10px auto;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.18em;color:rgba(200,50,30,.4);text-transform:uppercase;">Szyld 3D — PLA Red</div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Druk 3D</span><span class="pd-tag">Restauracja</span><span class="pd-tag">Szyld / Logo</span></div>
+      <div class="pd-name">Szyld wejściowy — Pizzeria Napoli</div>
+      <div class="pd-desc">Trójwymiarowy szyld z nazwą restauracji i logotypem. Druk FDM PLA czerwony, litery 3D montowane bezpośrednio na ścianie.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Gadżety Café -->
+  <div class="port-detail-card rv rv-1" data-cat="3d restauracja" style="border-color:rgba(212,240,0,.12);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#0a0f00,#050800);">
+      <div style="display:flex;gap:14px;z-index:2;position:relative;">
+        <div style="width:44px;height:44px;background:rgba(212,240,0,.07);border:1px solid rgba(212,240,0,.2);border-radius:50%;"></div>
+        <div style="width:44px;height:44px;background:rgba(212,240,0,.05);border:1px solid rgba(212,240,0,.15);border-radius:2px;"></div>
+        <div style="width:44px;height:44px;background:rgba(212,240,0,.06);border:1px solid rgba(212,240,0,.18);border-radius:50% 0 50% 0;"></div>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Druk 3D</span><span class="pd-tag">Kawiarnia</span><span class="pd-tag">Gadżety reklamowe</span></div>
+      <div class="pd-name">Gadżety brandingowe — Café Norda</div>
+      <div class="pd-desc">Breloki z logo, stojak na wizytówki, podstawki pod filiżanki. Seria limitowana 100 szt. jako upominek dla stałych gości kawiarni.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- Dekoracje Burger Bar -->
+  <div class="port-detail-card rv" data-cat="3d restauracja" style="border-color:rgba(240,140,0,.12);">
+    <div class="pd-visual" style="background:linear-gradient(135deg,#1a0a00,#0a0500);">
+      <div style="z-index:2;position:relative;">
+        <svg width="80" height="90" viewBox="0 0 80 90" fill="none">
+          <rect x="10" y="48" width="60" height="7" rx="1" fill="rgba(240,140,0,.25)" stroke="rgba(240,140,0,.45)" stroke-width=".8"/>
+          <ellipse cx="40" cy="36" rx="26" ry="16" fill="rgba(240,140,0,.12)" stroke="rgba(240,140,0,.35)" stroke-width=".8"/>
+          <rect x="12" y="57" width="56" height="9" rx="1" fill="rgba(240,140,0,.1)" stroke="rgba(240,140,0,.28)" stroke-width=".8"/>
+          <rect x="14" y="68" width="52" height="7" rx="3.5" fill="rgba(240,140,0,.18)" stroke="rgba(240,140,0,.38)" stroke-width=".8"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="pd-tags"><span class="pd-tag acc">Druk 3D</span><span class="pd-tag">Burger Bar</span><span class="pd-tag">Dekoracje stołu</span></div>
+      <div class="pd-name">Holderki i dekoracje — Smoke & Grill</div>
+      <div class="pd-desc">Holderki na serwetki, stojaczki na sosy, tabliczki z opisem specjałów. FDM PLA szary antracyt — pasujący do industrialnego klimatu lokalu.</div>
+      <a href="#" class="pd-arrow">Zobacz →</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="grid-column:1/-1;">
+    <div class="cta-band rv" style="margin:24px 0 0;">
+      <div class="cta-l">
+        <div class="cta-tag">Masz projekt dla swojego lokalu?</div>
+        <h2 class="cta-t">Zamów<br>wycenę</h2>
+        <a href="index.html#contact" class="btn btn-acc btn-acc lg">Skontaktuj się →</a>
+      </div>
+      <div class="cta-rings"><div class="cr cr1"></div><div class="cr cr2"></div><div class="cr cr3"></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="ft-top">
+    <div><div class="ft-logo">MSC</div><div class="ft-tag">Studio między ideą a formą.</div></div>
+    <div class="ft-nav">
+      <div class="fn-col"><div class="fn-t">Usługi</div><a href="services.html#modeling">Modele 3D</a><a href="services.html#webdev">Strony WWW</a><a href="services.html#social">Social Media</a></div>
+      <div class="fn-col"><div class="fn-t">Studio</div><a href="portfolio.html">Portfolio</a><a href="shop.html">Sklep 3D</a><a href="blog.html">Blog</a></div>
+      <div class="fn-col"><div class="fn-t">Kontakt</div><a href="mailto:hello@maxspatialcraft.pl">Email</a><a href="social.html">Social</a></div>
+    </div>
+  </div>
+  <div class="ft-bot"><span>© 2025 MAX SPATIAL CRAFT.</span><span>Made in Poland 🇵🇱</span></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/filters.js"></script>
+</body>
+</html>

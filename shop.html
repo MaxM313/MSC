@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sklep 3D — MAX SPATIAL CRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+<div class="cursor" id="cur"></div><div class="cursor-f" id="curf"></div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-hdr">
+    <div style="display:flex;align-items:baseline;gap:10px;">
+      <span class="cart-hdr-title">Koszyk</span>
+      <span class="cart-hdr-count" id="cartCountLabel"></span>
+    </div>
+    <button class="cart-x" id="cartClose">✕</button>
+  </div>
+  <div class="cart-body" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="ce-num">∅</div>
+      <div class="ce-txt">Koszyk jest pusty</div>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none;">
+    <div class="cs-rows">
+      <div class="cs-row"><span class="cs-l">Produkty</span><span class="cs-v" id="sidebarSubtotal">0 zł</span></div>
+      <div class="cs-row"><span class="cs-l">Dostawa pliku</span><span class="cs-v acc">Gratis (email)</span></div>
+      <div class="cs-row total"><span class="cs-l">Do zapłaty</span><span class="cs-v big" id="sidebarTotal">0 zł</span></div>
+    </div>
+    <div class="pay-badges">
+      <span class="pb">VISA</span><span class="pb">Mastercard</span><span class="pb">BLIK</span><span class="pb">Apple Pay</span><span class="pb">Google Pay</span>
+    </div>
+    <p class="cart-note">Plik STL wysyłamy na email w ciągu 24h po potwierdzeniu płatności przez Stripe.</p>
+    <button class="btn-to-pay" id="btnToPay">Zapłać kartą →</button>
+    <button class="btn-back" id="btnBack">Kontynuuj zakupy</button>
+  </div>
+</div>
+
+<!-- STRIPE CHECKOUT MODAL -->
+<div class="stripe-modal" id="stripeModal">
+  <div class="sm-bg" id="smBg"></div>
+  <div class="sm-box">
+    <button class="sm-x" id="smClose">✕</button>
+    <div id="smForm">
+      <div class="sm-title">Płatność</div>
+      <div class="sm-sub">// Stripe — szyfrowane SSL</div>
+      <div class="sm-summary" id="smSummary"></div>
+      <div class="sm-fields">
+        <div class="smf-row">
+          <div class="smf-g"><label>Imię</label><input type="text" id="smName" placeholder="Jan" required></div>
+          <div class="smf-g"><label>Nazwisko</label><input type="text" id="smSurname" placeholder="Kowalski" required></div>
+        </div>
+        <div class="smf-g"><label>Email (wyślemy plik)</label><input type="email" id="smEmail" placeholder="jan@przykład.pl" required></div>
+        <div class="smf-g"><label>Numer karty</label>
+          <input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19">
+        </div>
+        <div class="smf-row">
+          <div class="smf-g"><label>Ważna do</label><input type="text" id="cardExp" placeholder="MM/RR" maxlength="5"></div>
+          <div class="smf-g"><label>CVC</label><input type="text" id="cardCvc" placeholder="123" maxlength="3"></div>
+        </div>
+      </div>
+      <div class="sm-secure">🔒 Dane karty nie są przechowywane — Stripe szyfruje wszystko</div>
+      <div class="sm-pi-row"><span class="sm-pi">VISA</span><span class="sm-pi">MC</span><span class="sm-pi">BLIK</span><span class="sm-pi">🍎 Pay</span><span class="sm-pi">G Pay</span></div>
+      <button class="btn-pay" id="btnPay">Zapłać <span id="payAmt"></span> →</button>
+    </div>
+    <div class="sm-ok" id="smOk">
+      <div class="sm-ok-icon">✓</div>
+      <div class="sm-ok-title">Płatność przyjęta!</div>
+      <div class="sm-ok-txt">Plik STL wyślemy na podany email w ciągu 24h.<br>Pytania? <strong>hello@maxspatialcraft.pl</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING CART BTN -->
+<button class="cart-float" id="cartFloat">
+  🛒 Koszyk <span class="cf-badge" id="cfBadge">0</span>
+</button>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><span class="logo-mark">MSC</span><span class="logo-sub">MAX SPATIAL CRAFT</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a><a href="services.html" class="nav-link">Usługi</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a><a href="shop.html" class="nav-link">Sklep 3D</a>
+    <a href="blog.html" class="nav-link">Blog</a><a href="social.html" class="nav-link">Social</a>
+    <a href="index.html#contact" class="nav-cta">Kontakt →</a>
+  </div>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html" class="mob-link">Home</a><a href="services.html" class="mob-link">Usługi</a>
+  <a href="portfolio.html" class="mob-link">Portfolio</a><a href="shop.html" class="mob-link">Sklep 3D</a>
+  <a href="blog.html" class="mob-link">Blog</a><a href="social.html" class="mob-link">Social</a>
+  <a href="index.html#contact" class="mob-link">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="ph-label">// Modele do druku 3D</div>
+  <h1 class="ph-title">SKLEP<em>3D</em></h1>
+  <p class="ph-desc">Gotowe pliki STL do druku. Kup, zapłać kartą — plik leci na email w ciągu 24h. Zero rejestracji, zero komplikacji.</p>
+</section>
+
+<div class="shop-filters">
+  <button class="f-btn active" data-filter="all">Wszystkie</button>
+  <button class="f-btn" data-filter="dekoracja">Dekoracje</button>
+  <button class="f-btn" data-filter="organizer">Organizery</button>
+  <button class="f-btn" data-filter="aromaterapia">Aromaterapia</button>
+  <button class="f-btn" data-filter="biuro">Biuro</button>
+</div>
+
+<div class="shop-grid">
+  <div class="prod-card rv" data-cat="dekoracja">
+    <div class="prod-vis pv-a"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 8L64 22V50L36 64L8 50V22L36 8Z" stroke="#d4f000" stroke-width="1.2" opacity=".7"/><path d="M36 8V64M8 22L64 22M8 50L64 50" stroke="#d4f000" stroke-width=".5" opacity=".3"/></svg><div class="prod-badge">Bestseller</div></div>
+    <div class="prod-info"><div class="prod-cat">Dekoracja / Grecka</div><div class="prod-name">Głowa Apollo — klasyczna</div>
+    <div class="prod-row"><span class="prod-price">89 zł</span><button class="prod-btn-add" onclick="addToCart('p1','Głowa Apollo — klasyczna',89)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv rv-1" data-cat="organizer">
+    <div class="prod-vis pv-b"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="14" y="14" width="44" height="44" rx="4" stroke="#00e5c8" stroke-width="1.2" opacity=".7"/><path d="M14 36H58M36 14V58" stroke="#00e5c8" stroke-width=".5" opacity=".3"/></svg><div class="prod-badge nb">Nowy</div></div>
+    <div class="prod-info"><div class="prod-cat">Organizer / Biurko</div><div class="prod-name">Stojak na słuchawki — Arch</div>
+    <div class="prod-row"><span class="prod-price">59 zł</span><button class="prod-btn-add" onclick="addToCart('p2','Stojak na słuchawki — Arch',59)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv rv-2" data-cat="aromaterapia">
+    <div class="prod-vis pv-c"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="26" stroke="#d4f000" stroke-width="1.2" opacity=".7"/><circle cx="36" cy="36" r="14" stroke="#d4f000" stroke-width=".5" opacity=".3"/><circle cx="36" cy="36" r="4" fill="#d4f000" opacity=".4"/></svg></div>
+    <div class="prod-info"><div class="prod-cat">Aromaterapia / Grecka</div><div class="prod-name">Dyfuzor Zeus — okrągły</div>
+    <div class="prod-row"><span class="prod-price">129 zł</span><button class="prod-btn-add" onclick="addToCart('p3','Dyfuzor Zeus — okrągły',129)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv" data-cat="dekoracja">
+    <div class="prod-vis pv-a"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><polygon points="36,8 60,28 50,60 22,60 12,28" stroke="#d4f000" stroke-width="1.2" opacity=".7" fill="none"/><polygon points="36,22 50,35 44,52 28,52 22,35" stroke="#d4f000" stroke-width=".5" opacity=".3" fill="none"/></svg></div>
+    <div class="prod-info"><div class="prod-cat">Dekoracja / Geometria</div><div class="prod-name">Wazon Pentagono — minimalist</div>
+    <div class="prod-row"><span class="prod-price">79 zł</span><button class="prod-btn-add" onclick="addToCart('p4','Wazon Pentagono',79)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv rv-1" data-cat="biuro">
+    <div class="prod-vis pv-b"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="10" y="20" width="52" height="36" rx="3" stroke="#00e5c8" stroke-width="1.2" opacity=".7"/><rect x="18" y="28" width="36" height="6" rx="1" stroke="#00e5c8" stroke-width=".8" opacity=".5"/></svg></div>
+    <div class="prod-info"><div class="prod-cat">Biuro / Organizer</div><div class="prod-name">Podstawka na monitor — Grid</div>
+    <div class="prod-row"><span class="prod-price">99 zł</span><button class="prod-btn-add" onclick="addToCart('p5','Podstawka na monitor — Grid',99)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv rv-2" data-cat="aromaterapia">
+    <div class="prod-vis pv-c"><svg class="prod-ico" width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 10 C36 10 20 28 20 44 A16 16 0 0 0 52 44 C52 28 36 10 36 10Z" stroke="#d4f000" stroke-width="1.2" opacity=".7" fill="none"/></svg><div class="prod-badge nb">Nowy</div></div>
+    <div class="prod-info"><div class="prod-cat">Aromaterapia / Dekoracja</div><div class="prod-name">Dyfuzor Hermes — łezka</div>
+    <div class="prod-row"><span class="prod-price">109 zł</span><button class="prod-btn-add" onclick="addToCart('p6','Dyfuzor Hermes — łezka',109)">Do koszyka →</button></div></div>
+  </div>
+  <div class="prod-card rv" data-cat="all" style="border-color:rgba(212,240,0,.15);">
+    <div class="prod-vis" style="background:none;border-bottom:1px solid #1e1e1e;flex-direction:column;gap:6px;">
+      <div style="font-family:'Syncopate',sans-serif;font-size:40px;color:#1e1e1e;font-weight:700;">+</div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;color:#333;text-transform:uppercase;">Na zamówienie</div>
+    </div>
+    <div class="prod-info"><div class="prod-cat">Zamówienie indywidualne</div><div class="prod-name">Własny model 3D — wycena</div>
+    <div class="prod-row"><span class="prod-price">od 150 zł</span><a href="index.html#contact" class="prod-btn-add">Zapytaj →</a></div></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="ft-top">
+    <div><div class="ft-logo">MSC</div><div class="ft-tag">Studio między ideą a formą.</div></div>
+    <div class="ft-nav">
+      <div class="fn-col"><div class="fn-t">Usługi</div><a href="services.html#modeling">Modele 3D</a><a href="services.html#webdev">Strony WWW</a><a href="services.html#social">Social Media</a></div>
+      <div class="fn-col"><div class="fn-t">Studio</div><a href="portfolio.html">Portfolio</a><a href="shop.html">Sklep 3D</a><a href="blog.html">Blog</a></div>
+      <div class="fn-col"><div class="fn-t">Kontakt</div><a href="mailto:hello@maxspatialcraft.pl">Email</a></div>
+    </div>
+  </div>
+  <div class="ft-bot"><span>© 2025 MAX SPATIAL CRAFT.</span><span>Made in Poland 🇵🇱</span></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>
