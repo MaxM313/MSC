@@ -1,2 +1,2 @@
 # MSC
-Site for my company
+Site for my small business called Max Spatial Craft
