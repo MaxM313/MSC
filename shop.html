@@ -30,54 +30,24 @@
     </div>
   </div>
   <div class="cart-foot" id="cartFoot" style="display:none;">
+    <div class="free-ship-wrap">
+      <div id="freeShippingMsg" class="free-ship-msg">Jeszcze 150 zł do darmowej dostawy</div>
+      <div class="free-ship-track"><div id="freeShippingBar" class="free-ship-fill"></div></div>
+    </div>
     <div class="cs-rows">
       <div class="cs-row"><span class="cs-l">Produkty</span><span class="cs-v" id="sidebarSubtotal">0 zł</span></div>
-      <div class="cs-row"><span class="cs-l">Dostawa pliku</span><span class="cs-v acc">Gratis (email)</span></div>
+      <div class="cs-row"><span class="cs-l">Dostawa InPost</span><span class="cs-v" id="shippingCost">15 zł</span></div>
       <div class="cs-row total"><span class="cs-l">Do zapłaty</span><span class="cs-v big" id="sidebarTotal">0 zł</span></div>
     </div>
     <div class="pay-badges">
       <span class="pb">VISA</span><span class="pb">Mastercard</span><span class="pb">BLIK</span><span class="pb">Apple Pay</span><span class="pb">Google Pay</span>
     </div>
-    <p class="cart-note">Plik STL wysyłamy na email w ciągu 24h po potwierdzeniu płatności przez Stripe.</p>
-    <button class="btn-to-pay" id="btnToPay">Zapłać kartą →</button>
+    <p class="cart-note">Wysyłka InPost Paczkomat w ciągu 3 dni roboczych. Tylko Polska 🇵🇱</p>
+    <button class="btn-to-pay" id="btnToPay">Zapłać →</button>
     <button class="btn-back" id="btnBack">Kontynuuj zakupy</button>
   </div>
 </div>
 
-<!-- STRIPE CHECKOUT MODAL -->
-<div class="stripe-modal" id="stripeModal">
-  <div class="sm-bg" id="smBg"></div>
-  <div class="sm-box">
-    <button class="sm-x" id="smClose">✕</button>
-    <div id="smForm">
-      <div class="sm-title">Płatność</div>
-      <div class="sm-sub">// Stripe — szyfrowane SSL</div>
-      <div class="sm-summary" id="smSummary"></div>
-      <div class="sm-fields">
-        <div class="smf-row">
-          <div class="smf-g"><label>Imię</label><input type="text" id="smName" placeholder="Jan" required></div>
-          <div class="smf-g"><label>Nazwisko</label><input type="text" id="smSurname" placeholder="Kowalski" required></div>
-        </div>
-        <div class="smf-g"><label>Email (wyślemy plik)</label><input type="email" id="smEmail" placeholder="jan@przykład.pl" required></div>
-        <div class="smf-g"><label>Numer karty</label>
-          <input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19">
-        </div>
-        <div class="smf-row">
-          <div class="smf-g"><label>Ważna do</label><input type="text" id="cardExp" placeholder="MM/RR" maxlength="5"></div>
-          <div class="smf-g"><label>CVC</label><input type="text" id="cardCvc" placeholder="123" maxlength="3"></div>
-        </div>
-      </div>
-      <div class="sm-secure">🔒 Dane karty nie są przechowywane — Stripe szyfruje wszystko</div>
-      <div class="sm-pi-row"><span class="sm-pi">VISA</span><span class="sm-pi">MC</span><span class="sm-pi">BLIK</span><span class="sm-pi">🍎 Pay</span><span class="sm-pi">G Pay</span></div>
-      <button class="btn-pay" id="btnPay">Zapłać <span id="payAmt"></span> →</button>
-    </div>
-    <div class="sm-ok" id="smOk">
-      <div class="sm-ok-icon">✓</div>
-      <div class="sm-ok-title">Płatność przyjęta!</div>
-      <div class="sm-ok-txt">Plik STL wyślemy na podany email w ciągu 24h.<br>Pytania? <strong>hello@maxspatialcraft.pl</strong></div>
-    </div>
-  </div>
-</div>
 
 <!-- FLOATING CART BTN -->
 <button class="cart-float" id="cartFloat">
@@ -106,7 +76,7 @@
   <div class="page-hero-grid"></div>
   <div class="ph-label">// Modele do druku 3D</div>
   <h1 class="ph-title">SKLEP<em>3D</em></h1>
-  <p class="ph-desc">Gotowe Wydruki 3d </p>
+  <p class="ph-desc">Oryginalne wydruki 3D prosto z pracowni. Zamawiasz online, płacisz kartą lub BLIK-iem — wysyłamy InPostem. Darmowa dostawa od 150 zł.</p>
 </section>
 
 <div class="shop-filters">

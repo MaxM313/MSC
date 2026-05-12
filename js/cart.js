@@ -1,16 +1,21 @@
 /* MAX SPATIAL CRAFT — cart.js
-   Stripe Checkout: koszyk → /api/checkout → stripe.com → success.html
+   Fizyczne wydruki 3D — dostawa InPost
+   Darmowa dostawa od 150 zł
 */
+
+var SHIPPING  = 15;
+var FREE_FROM = 150;
 
 var cart = [];
 try { cart = JSON.parse(localStorage.getItem('msc-cart') || '[]'); } catch(e){ cart = []; }
 
-function cartSave()  { localStorage.setItem('msc-cart', JSON.stringify(cart)); }
-function cartFmt(n)  { return Math.round(n) + ' zł'; }
-function cartTotal() { return cart.reduce(function(s,i){ return s + i.price * i.qty; }, 0); }
-function cartCount() { return cart.reduce(function(s,i){ return s + i.qty; }, 0); }
+function cartSave()     { localStorage.setItem('msc-cart', JSON.stringify(cart)); }
+function cartFmt(n)     { return Math.round(n) + ' zł'; }
+function cartSubtotal() { return cart.reduce(function(s,i){ return s + i.price * i.qty; }, 0); }
+function cartShipping() { return cartSubtotal() >= FREE_FROM ? 0 : SHIPPING; }
+function cartGrand()    { return cartSubtotal() + cartShipping(); }
+function cartCount()    { return cart.reduce(function(s,i){ return s + i.qty; }, 0); }
 
-/* ── SIDEBAR OPEN/CLOSE ── */
 function openCart() {
   var o = document.getElementById('cartOverlay');
   var s = document.getElementById('cartSidebar');
@@ -26,7 +31,6 @@ function closeCart() {
   document.body.style.overflow = '';
 }
 
-/* ── ADD TO CART ── */
 window.addToCart = function(id, name, price) {
   price = parseFloat(price);
   var found = false;
@@ -38,7 +42,6 @@ window.addToCart = function(id, name, price) {
   cartToast('✓ ' + name + ' dodano do koszyka');
 };
 
-/* ── QTY CHANGE ── */
 window.changeQty = function(id, delta) {
   for(var i = 0; i < cart.length; i++) {
     if(cart[i].id === id) {
@@ -50,23 +53,24 @@ window.changeQty = function(id, delta) {
   cartSave(); cartRender();
 };
 
-/* ── REMOVE ── */
 window.removeItem = function(id) {
   cart = cart.filter(function(i){ return i.id !== id; });
   cartSave(); cartRender();
 };
 
-/* ── RENDER SIDEBAR ── */
 function cartRender() {
-  var c      = cartCount();
-  var badge  = document.getElementById('cfBadge');
-  var lbl    = document.getElementById('cartCountLabel');
-  var items  = document.getElementById('cartItems');
-  var empty  = document.getElementById('cartEmpty');
-  var foot   = document.getElementById('cartFoot');
-  var subEl  = document.getElementById('sidebarSubtotal');
-  var totEl  = document.getElementById('sidebarTotal');
-  var payBtn = document.getElementById('btnToPay');
+  var c       = cartCount();
+  var badge   = document.getElementById('cfBadge');
+  var lbl     = document.getElementById('cartCountLabel');
+  var items   = document.getElementById('cartItems');
+  var empty   = document.getElementById('cartEmpty');
+  var foot    = document.getElementById('cartFoot');
+  var subEl   = document.getElementById('sidebarSubtotal');
+  var shipEl  = document.getElementById('shippingCost');
+  var totEl   = document.getElementById('sidebarTotal');
+  var payBtn  = document.getElementById('btnToPay');
+  var barEl   = document.getElementById('freeShippingBar');
+  var msgEl   = document.getElementById('freeShippingMsg');
 
   if(badge) { badge.textContent = c; badge.className = 'cf-badge' + (c > 0 ? ' show' : ''); }
   if(lbl)   lbl.textContent = c > 0 ? '(' + c + ')' : '';
@@ -107,40 +111,58 @@ function cartRender() {
     items.appendChild(row);
   }
 
-  var t = cartTotal();
-  if(subEl) subEl.textContent = cartFmt(t);
-  if(totEl) totEl.textContent = cartFmt(t);
+  var sub  = cartSubtotal();
+  var ship = cartShipping();
+  var left = FREE_FROM - sub;
+
+  if(subEl) subEl.textContent = cartFmt(sub);
+  if(totEl) totEl.textContent = cartFmt(cartGrand());
+
+  if(shipEl) {
+    if(ship === 0) { shipEl.textContent = 'Gratis ✓'; shipEl.style.color = '#d4f000'; }
+    else           { shipEl.textContent = cartFmt(ship); shipEl.style.color = '#aaa'; }
+  }
+
+  if(barEl && msgEl) {
+    if(ship === 0) {
+      msgEl.textContent = '✓ Darmowa dostawa!';
+      msgEl.style.color = '#d4f000';
+      barEl.style.width = '100%';
+    } else {
+      msgEl.textContent = 'Jeszcze ' + cartFmt(left) + ' do darmowej dostawy';
+      msgEl.style.color = '#555';
+      barEl.style.width = Math.min(100, Math.round((sub / FREE_FROM) * 100)) + '%';
+    }
+  }
+
+  if(payBtn) payBtn.textContent = 'Zapłać ' + cartFmt(cartGrand()) + ' →';
 }
 
-/* ── STRIPE CHECKOUT ── */
 function goToStripe() {
   var btn = document.getElementById('btnToPay');
   if(cart.length === 0) return;
-
   if(btn) { btn.textContent = 'Przekierowuję...'; btn.disabled = true; }
 
   fetch('/api/checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: cart })
+    body: JSON.stringify({ items: cart, shipping: cartShipping() })
   })
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
+  .then(function(res){ return res.json(); })
+  .then(function(data){
     if(data.url) {
-      // Przekieruj na oficjalną stronę Stripe Checkout
       window.location.href = data.url;
     } else {
       cartToast('⚠ Błąd: ' + (data.error || 'Spróbuj ponownie'));
-      if(btn) { btn.textContent = 'Zapłać kartą / BLIK →'; btn.disabled = false; }
+      if(btn){ btn.textContent = 'Zapłać ' + cartFmt(cartGrand()) + ' →'; btn.disabled = false; }
     }
   })
-  .catch(function(err) {
+  .catch(function(){
     cartToast('⚠ Problem z połączeniem. Spróbuj ponownie.');
-    if(btn) { btn.textContent = 'Zapłać kartą / BLIK →'; btn.disabled = false; }
+    if(btn){ btn.textContent = 'Zapłać ' + cartFmt(cartGrand()) + ' →'; btn.disabled = false; }
   });
 }
 
-/* ── TOAST ── */
 function cartToast(msg) {
   var t = document.createElement('div');
   t.style.cssText = 'position:fixed;bottom:90px;right:28px;background:#0e0e0e;border:1px solid #d4f000;color:#e8e8e8;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;padding:12px 18px;border-radius:2px;z-index:9999;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none;';
@@ -150,8 +172,7 @@ function cartToast(msg) {
   setTimeout(function(){ t.style.opacity='0'; setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); }, 300); }, 3000);
 }
 
-/* ── INIT ── */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function(){
   var floatBtn = document.getElementById('cartFloat');
   var closeBtn = document.getElementById('cartClose');
   var overlay  = document.getElementById('cartOverlay');
@@ -164,9 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if(backBtn)  backBtn.addEventListener('click', closeCart);
   if(toPayBtn) toPayBtn.addEventListener('click', goToStripe);
 
-  // Jeśli wróciłeś z anulowanej płatności
   if(window.location.search.indexOf('cancelled=true') !== -1) {
-    cartToast('Płatność anulowana — koszyk czeka na Ciebie');
+    setTimeout(function(){ openCart(); cartToast('Płatność anulowana — koszyk czeka na Ciebie'); }, 500);
   }
 
   cartRender();
