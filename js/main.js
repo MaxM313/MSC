@@ -59,3 +59,28 @@ if (cf) {
     }, 1500);
   });
 }
+
+// ── PORTFOLIO IMAGE MODAL ─────────────────────────
+var imageModal = document.getElementById('imageModal');
+var imageModalImg = document.getElementById('imageModalImg');
+var imageModalClose = document.getElementById('imageModalClose');
+if (imageModal && imageModalImg && imageModalClose) {
+  document.querySelectorAll('.pd-browser img').forEach(function(img){
+    img.addEventListener('click', function(){
+      imageModal.classList.add('open');
+      imageModalImg.src = img.src;
+      imageModalImg.alt = img.alt || '';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeImageModal(){
+    imageModal.classList.remove('open');
+    imageModalImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  imageModalClose.addEventListener('click', closeImageModal);
+  imageModal.addEventListener('click', function(e){ if (e.target === imageModal) closeImageModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && imageModal.classList.contains('open')) closeImageModal(); });
+}
