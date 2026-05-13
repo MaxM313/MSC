@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "MAX SPATIAL CRAFT — 3D Design & Digital Studio",
   "dependencies": {
-    "stripe": "^14.25.0"
+    "stripe": "^14.0.0"
   }
 }
