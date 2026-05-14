@@ -1,36 +1,42 @@
 // api/orders.js — Furgonetka Universal Integration
-// Endpoint: GET /api/orders
-// Dokumentacja: https://furgonetka.pl/api/universal-integration-example
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Token, Token');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // ── AUTORYZACJA TOKENA ──────────────────────────────────
+  // Akceptuj token w różnych formatach
   const authHeader = req.headers['authorization'] || '';
-  const token = authHeader.replace('Bearer ', '').trim();
+  const xToken     = req.headers['x-token'] || '';
+  const tokenHeader= req.headers['token'] || '';
+  const queryToken = (req.query && req.query.token) || '';
 
-  if (token !== process.env.FURGONETKA_TOKEN) {
-    return res.status(401).json({ error: 'Unauthorized' });
+  const receivedToken = authHeader.replace(/^Bearer\s+/i, '').replace(/^Token\s+/i, '').trim()
+    || xToken.trim()
+    || tokenHeader.trim()
+    || queryToken.trim();
+
+  // Loguj co dostajemy (do debugowania)
+  console.log('Headers:', JSON.stringify(req.headers));
+  console.log('Received token:', receivedToken);
+  console.log('Expected token:', process.env.FURGONETKA_TOKEN);
+
+  if (receivedToken !== process.env.FURGONETKA_TOKEN) {
+    return res.status(401).json({ error: 'Unauthorized', received: receivedToken ? 'token present but wrong' : 'no token' });
   }
 
-  // ── GET /api/orders — lista zamówień dla Furgonetki ─────
   if (req.method === 'GET') {
     try {
-      // Pobierz ostatnie płatności ze Stripe
       const sessions = await stripe.checkout.sessions.list({
         limit: 50,
         expand: ['data.line_items', 'data.shipping_details'],
       });
 
-      // Filtruj tylko opłacone
       const paid = sessions.data.filter(s => s.payment_status === 'paid');
 
-      // Mapuj na format Furgonetki
       const orders = paid.map(session => {
         const shipping = session.shipping_details || {};
         const address  = shipping.address || {};
@@ -59,14 +65,8 @@ module.exports = async function handler(req, res) {
         };
       });
 
-      // Paginacja wymagana przez Furgonetke
       return res.status(200).json({
-        meta: {
-          total:        orders.length,
-          per_page:     50,
-          current_page: 1,
-          last_page:    1,
-        },
+        meta: { total: orders.length, per_page: 50, current_page: 1, last_page: 1 },
         data: orders,
       });
 
@@ -76,15 +76,9 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // ── POST /api/orders/{id}/tracking_number ───────────────
-  // Furgonetka wysyła numer przesyłki po nadaniu paczki
   if (req.method === 'POST') {
     const { tracking_number, order_id } = req.body || {};
-    console.log(`Tracking update — order: ${order_id}, tracking: ${tracking_number}`);
-
-    // Tu możesz np. zapisać numer do bazy lub wysłać email do klienta
-    // Na razie logujemy — rozbuduj wg potrzeb
-
+    console.log(`Tracking — order: ${order_id}, tracking: ${tracking_number}`);
     return res.status(200).json({ success: true });
   }
 
