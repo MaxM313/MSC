@@ -1,8 +1,9 @@
 {
   "name": "max-spatial-craft",
   "version": "1.0.0",
-  "description": "MAX SPATIAL CRAFT — 3D Design & Digital Studio",
+  "description": "MAX SPATIAL CRAFT \u2014 3D Design & Digital Studio",
   "dependencies": {
-    "stripe": "^14.0.0"
+    "stripe": "^14.0.0",
+    "nodemailer": "^6.9.0"
   }
 }
