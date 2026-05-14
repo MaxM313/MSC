@@ -25,7 +25,7 @@ module.exports = async function handler(req, res) {
       currency: 'pln',
       product_data: {
         name: item.name,
-        description: 'Wydruk 3D — wysyłka InPost Paczkomat w ciągu 3 dni roboczych',
+        description: 'Wydruk 3D — wysyłka Kurier InPost w ciągu 3 dni roboczych',
       },
       unit_amount: Math.round(item.price * 100),
     },
@@ -36,7 +36,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'blik'],
+      payment_method_types: ['card'],
       line_items,
       mode: 'payment',
       locale: 'pl',
@@ -49,8 +49,8 @@ module.exports = async function handler(req, res) {
             type: 'fixed_amount',
             fixed_amount: { amount: shippingCents, currency: 'pln' },
             display_name: shippingCents === 0
-              ? 'Darmowa dostawa InPost Paczkomat ✓'
-              : 'InPost Paczkomat',
+              ? 'Darmowa dostawa Kurier InPost ✓'
+              : 'Kurier InPost',
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 2 },
               maximum: { unit: 'business_day', value: 3 },
