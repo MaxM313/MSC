@@ -408,5 +408,34 @@ function addProduct(id) {
   addToCart(uid, name, p.price);
 }
 </script>
+<script>
+document.getElementById('cf').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type=submit]');
+  const ok  = document.getElementById('cfok');
+  btn.textContent = 'Wysyłanie...';
+  btn.disabled = true;
+
+  const inputs = this.querySelectorAll('input,select,textarea');
+  const data = {
+    name:    inputs[0].value,
+    email:   inputs[1].value,
+    service: inputs[2].value,
+    message: inputs[3].value,
+  };
+
+  try {
+    const res  = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    const json = await res.json();
+    if(json.success) { ok.classList.add('show'); this.reset(); setTimeout(()=>ok.classList.remove('show'),5000); }
+    else alert('Błąd: ' + (json.error || 'Spróbuj ponownie'));
+  } catch(e) {
+    alert('Problem z połączeniem.');
+  }
+
+  btn.textContent = 'Wyślij wiadomość →';
+  btn.disabled = false;
+});
+</script>
 </body>
 </html>
