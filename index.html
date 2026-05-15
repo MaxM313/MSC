@@ -117,25 +117,25 @@
   <div class="port-grid">
     <a href="portfolio.html" class="port-card pc-rest rv">
       <div class="port-visual">
-        <div class="port-bg"><div class="port-img-text">REST</div></div>
+        <div class="port-bg"><div class="port-img-text">Zio pizza</div></div>
         <div class="port-overlay"></div>
       </div>
       <div class="port-info">
         <div class="port-cat">Restauracja / Gastronomia</div>
-        <div class="port-name">Trattoria Bellavista</div>
-        <div class="port-sub">Menu online, rezerwacje, galeria</div>
+        <div class="port-name">Zio pizza myslenice</div>
+        <div class="port-sub">Przyprawnik / Serwetnik</div>
       </div>
       <div class="port-link">Zobacz →</div>
     </a>
     <a href="portfolio.html" class="port-card pc-shop rv rv-1">
       <div class="port-visual">
-        <div class="port-bg"><div class="port-img-text">SHOP</div></div>
+        <img src="./assets/img/Zrzut ekranu 2026-05-12 214357.png" height="400" width="900" alt="">
         <div class="port-overlay"></div>
       </div>
       <div class="port-info">
         <div class="port-cat">E-commerce / Sklep</div>
-        <div class="port-name">NordicWood Store</div>
-        <div class="port-sub">Sklep internetowy, 200+ produktów</div>
+        <div class="port-name">cnti-myslenice</div>
+        <div class="port-sub">Sklep internetowy, portfolio online</div>
       </div>
       <div class="port-link">Zobacz →</div>
     </a>
@@ -145,26 +145,103 @@
 <!-- SHOP PREVIEW -->
 <section class="home-shop">
   <div class="sec-hdr">
-    <div class="sec-hdr-left rv"><div class="sec-label">// Sklep 3D</div><h2 class="sec-title">Gotowe modele<br><em>do druku</em></h2></div>
+    <div class="sec-hdr-left rv"><div class="sec-label">// Sklep 3D</div><h2 class="sec-title">SKLEP 3D<br><em>gotowych modeli</em></h2></div>
     <a href="shop.html" class="sec-more rv rv-2">Sklep →</a>
   </div>
-  <div class="prods-grid">
-  
+  <div class="prods-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;">
+
     <div class="prod-card rv rv-1">
-      <div class="prod-vis pv-b">
-        <img src="./assets/img/26cd727b-b566-4ad0-a751-96924214f124.jpeg"  width="300px" height="250" alt="">
+      <div class="prod-vis pv-b" style="height:260px;">
+        <img src="./assets/img/26cd727b-b566-4ad0-a751-96924214f124.jpeg" style="width:100%;height:100%;object-fit:cover;" alt="Stojak na słuchawki">
         <div class="prod-badge nb">Nowy</div>
       </div>
       <div class="prod-info">
-        <div class="prod-cat">Organizacja</div>
-        <div class="prod-name">Stojak na słuchawki</div>
-        <div class="prod-row">
-          <span class="prod-price">50 zł</span>
-          <button class="prod-btn-add" onclick="addToCart('p2','Stojak na słuchawki',59)">Do koszyka →</button>
+        <div class="prod-cat">Organizer / Biurko</div>
+        <div class="prod-name">Stojak na słuchawki — Różne kolory</div>
+        <div class="prod-options">
+          <div class="prod-option-group">
+            <label class="prod-option-label">Kolor</label>
+            <div class="prod-colors" id="h1Colors">
+              <button class="color-btn active" data-color="Biały" style="background:#f0f0f0;border:1px solid #444;" title="Biały"></button>
+              <button class="color-btn" data-color="Czarny" style="background:#1a1a1a;" title="Czarny"></button>
+              <button class="color-btn" data-color="Czerwony" style="background:#cc2222;" title="Czerwony"></button>
+              <button class="color-btn" data-color="Zielony" style="background:#2d8c4e;" title="Zielony"></button>
+              <button class="color-btn" data-color="Niebieski" style="background:#2d5fa8;" title="Niebieski"></button>
+              <button class="color-btn marble" data-color="Marble" title="Marble"></button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-row" style="margin-top:14px;">
+          <span class="prod-price">40 zł</span>
+          <button class="prod-btn-add" onclick="addProduct('h1')">Do koszyka →</button>
         </div>
       </div>
     </div>
-  
+
+    <div class="prod-card rv rv-2">
+      <div class="prod-vis pv-b" style="height:260px;">
+        <img src="./assets/img/IMG_9127.JPG" style="width:100%;height:100%;object-fit:cover;" alt="Stojak grecki">
+        <div class="prod-badge nb">Nowy</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Organizer / Biurko</div>
+        <div class="prod-name">Stojak na słóchawki grecki — Różne kolory</div>
+        <div class="prod-options">
+          <div class="prod-option-group">
+            <label class="prod-option-label">Kolor</label>
+            <div class="prod-colors" id="h2Colors">
+              <button class="color-btn active" data-color="Biały" style="background:#f0f0f0;border:1px solid #444;" title="Biały"></button>
+              <button class="color-btn" data-color="Czarny" style="background:#1a1a1a;" title="Czarny"></button>
+              <button class="color-btn" data-color="Czerwony" style="background:#cc2222;" title="Czerwony"></button>
+              <button class="color-btn" data-color="Zielony" style="background:#2d8c4e;" title="Zielony"></button>
+              <button class="color-btn" data-color="Niebieski" style="background:#2d5fa8;" title="Niebieski"></button>
+              <button class="color-btn marble" data-color="Marble" title="Marble"></button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-row" style="margin-top:14px;">
+          <span class="prod-price">50 zł</span>
+          <button class="prod-btn-add" onclick="addProduct('h2')">Do koszyka →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card rv rv-3">
+      <div class="prod-vis pv-b" style="height:260px;">
+        <img src="./assets/img/IMG_9114.JPG" style="width:100%;height:100%;object-fit:cover;" alt="Wazon">
+        <div class="prod-badge nb">Nowy</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">HOME / garden</div>
+        <div class="prod-name">Wazon — Różne kolory i wielkości</div>
+        <div class="prod-options">
+          <div class="prod-option-group">
+            <label class="prod-option-label">Kolor</label>
+            <div class="prod-colors" id="h3Colors">
+              <button class="color-btn active" data-color="Biały" style="background:#f0f0f0;border:1px solid #444;" title="Biały"></button>
+              <button class="color-btn" data-color="Czarny" style="background:#1a1a1a;" title="Czarny"></button>
+              <button class="color-btn" data-color="Czerwony" style="background:#cc2222;" title="Czerwony"></button>
+              <button class="color-btn" data-color="Zielony" style="background:#2d8c4e;" title="Zielony"></button>
+              <button class="color-btn" data-color="Niebieski" style="background:#2d5fa8;" title="Niebieski"></button>
+              <button class="color-btn marble" data-color="Marble" title="Marble"></button>
+            </div>
+          </div>
+          <div class="prod-option-group">
+            <label class="prod-option-label">Rozmiar</label>
+            <div class="prod-sizes" id="h3Sizes">
+              <button class="size-btn active" data-size="S" data-price="40">S — 40 zł</button>
+              <button class="size-btn" data-size="M" data-price="48">M — 48 zł</button>
+              <button class="size-btn" data-size="L" data-price="55">L — 55 zł</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-row" style="margin-top:14px;">
+          <span class="prod-price" id="h3Price">40 zł</span>
+          <button class="prod-btn-add" onclick="addProduct('h3')">Do koszyka →</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -229,7 +306,7 @@
     <div class="ft-nav">
       <div class="fn-col"><div class="fn-t">Usługi</div><a href="services.html#modeling">Modele 3D</a><a href="services.html#webdev">Strony WWW</a><a href="services.html#social">Social Media</a></div>
       <div class="fn-col"><div class="fn-t">Studio</div><a href="portfolio.html">Portfolio</a><a href="shop.html">Sklep 3D</a><a href="blog.html">Blog</a></div>
-      <div class="fn-col"><div class="fn-t">Kontakt</div><a href="mailto:maxspatialcraft@gmail.com">Email</a><a href="social.html">Social Media</a></div>
+      <div class="fn-col"><div class="fn-t">Kontakt</div><a href="mailto:maxspatialcraft@gmail.com">Email </a>maxspatialcraft@gmail.com <a href="tel:+48 508 338 574">tel:</a>+48 508 338 574 <a href="social.html">Social Media</a></div>
     </div>
   </div>
   <div class="ft-bot"><span>© 2025 MAX SPATIAL CRAFT. Wszelkie prawa zastrzeżone.</span><span>Made in Poland 🇵🇱</span></div>
@@ -279,5 +356,55 @@
 
 <script src="js/main.js"></script>
 <script src="js/cart.js"></script>
+<style>
+.prod-options{display:flex;flex-direction:column;gap:12px;margin:14px 0 0;}
+.prod-option-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#555;display:block;margin-bottom:7px;}
+.prod-colors{display:flex;gap:8px;flex-wrap:wrap;}
+.color-btn{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s;outline:none;}
+.color-btn.active{border-color:#d4f000 !important;transform:scale(1.15);}
+.color-btn:hover{transform:scale(1.1);}
+.color-btn.marble{background:linear-gradient(135deg,#e8e8e8 0%,#c0b8b0 30%,#e8e8e8 50%,#b0a8a0 70%,#d8d0c8 100%);}
+.prod-sizes{display:flex;gap:8px;flex-wrap:wrap;}
+.size-btn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;padding:6px 12px;background:transparent;border:1px solid #2c2c2c;border-radius:2px;color:#888;cursor:pointer;transition:all .2s;}
+.size-btn.active{border-color:#d4f000;color:#d4f000;}
+.size-btn:hover{border-color:#d4f000;color:#d4f000;}
+</style>
+
+<script>
+var homeProducts = {
+  h1: { name: 'Stojak na słuchawki', color: 'Biały', size: 'M', price: 40 },
+  h2: { name: 'Stojak grecki', color: 'Biały', size: 'M', price: 50 },
+  h3: { name: 'Wazon', color: 'Biały', size: 'S', price: 40 },
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  ['h1','h2','h3'].forEach(function(id) {
+    document.querySelectorAll('#' + id + 'Colors .color-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#' + id + 'Colors .color-btn').forEach(function(b){ b.classList.remove('active'); });
+        this.classList.add('active');
+        homeProducts[id].color = this.dataset.color;
+      });
+    });
+    document.querySelectorAll('#' + id + 'Sizes .size-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#' + id + 'Sizes .size-btn').forEach(function(b){ b.classList.remove('active'); });
+        this.classList.add('active');
+        homeProducts[id].size  = this.dataset.size;
+        homeProducts[id].price = parseInt(this.dataset.price);
+        var el = document.getElementById(id + 'Price');
+        if(el) el.textContent = homeProducts[id].price + ' zł';
+      });
+    });
+  });
+});
+
+function addProduct(id) {
+  var p    = homeProducts[id];
+  var uid  = id + '-' + p.size + '-' + p.color;
+  var name = p.name + ' ' + p.size + ' — ' + p.color;
+  addToCart(uid, name, p.price);
+}
+</script>
 </body>
 </html>
